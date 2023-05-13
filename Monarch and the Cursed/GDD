@@ -1,0 +1,39 @@
+Game Development Document for Monarcch and the Cursed
+
+Overview:
+  The Monarch curses the heir that stands next in line for the throne, hoping to get their favorite child to inherit.
+  The curse causes vines and flowers to consume the heir, turning them into The Cursed.
+  The Cursed retains some of their memories, and exists as a monstrous beast composed of plants.
+  The Monarch hires Heroes from the surrounding lands and sends them into the garden to slay the monster.
+  
+Game Mechanics:
+  The Heroes are controlled by the player. After making their way to The Cursed, The Heroes must fight and defeat the monster.
+  If defeated, The Heroes will gain permanent powerups.
+  If The Hero defeats The Cursed, they have two options:
+    1. Try to kill The Cursed.
+      This leads to The Hero being consumed by The Cursed.
+      The Cursed will gain a buff for the next run.
+    2. Offer their assistance to The Cursed.
+      The Cursed will gain no buffs, but the current Hero will be supporting The Cursed for the next run.
+      
+  If any Hero fails to defeat The Cursed, The Cursed loses its supporters and its buffs.
+  If four Heroes in a row defeat The Cursed, the player assumes control of The Cursed.
+  The Cursed then battles The Monarch.
+  If The Cursed fails against The Monarch, The Cursed loses its supports and its buffs.
+  If the Cursed wins against The Monarch, there are three outcomes:
+    1. Good ending
+      All four Heroes offered assistance to The Cursed.
+      The Cursed is able to keep their power under control.
+      With the help from their supporters, they take control of the kingdom.
+    2. Neutral ending
+      Any mix of Heroes offering assitance and being consumed by The Cursed.
+      The Cursed becomes unresponsive, but is not a threat.
+      The kingdom is abandoned.
+    3. Bad ending
+      All four Heroes were consumed by The Cursed.
+      The Cursed loses control, and the kingdom is consumed by vines.
+      
+  The good ending should be the most difficult to achieve.
+    1. Offering assistance to The Cursed should make the subsequent Hero vs Cursed fights more difficult.
+    2. Offering assistance to The Cursed should make the fight against The Monarch more difficult.
+    These could be achieved by making the buffs the Heroes have persist in the boss fights, but are taken away in the fight with The Monarch.
