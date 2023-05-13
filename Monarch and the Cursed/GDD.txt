@@ -1,5 +1,13 @@
 Game Development Document for Monarcch and the Cursed
 
+Platform:
+  Unity on Windows 10
+  
+Tools:
+  Github
+  Unity
+  C#
+
 Overview:
   The Monarch curses the heir that stands next in line for the throne, hoping to get their favorite child to inherit.
   The curse causes vines and flowers to consume the heir, turning them into The Cursed.
@@ -37,3 +45,39 @@ Game Mechanics:
     1. Offering assistance to The Cursed should make the subsequent Hero vs Cursed fights more difficult.
     2. Offering assistance to The Cursed should make the fight against The Monarch more difficult.
     These could be achieved by making the buffs the Heroes have persist in the boss fights, but are taken away in the fight with The Monarch.
+  
+Levels:
+  1. The Encampment
+    This is where The Heroes will embark into The Garden from.
+    Actions:
+      Choose Hero
+      Upgrade Hero
+      Upgrade Encampment
+  2. The Garden
+    Heroes fight through hordes of The Cursed's minions in The Monarch's vast garden.
+    Actions:
+      Kill enemies to gain XP
+      Level up to gain skills
+      Find items to gain buffs
+  3. The Circle
+    The Cursed sits at the center of The Garden in a stone circle.
+    This is where The Hero will fight The Cursed.
+  4. The Palace
+    The Monarch sits on their throne in their castle, lording over The Garden.
+    This is where The Cursed will fight The Monarch.
+    
+Gameplay:
+  Movement:
+    
+  Combat:
+    Melee:
+      
+    Ranged:
+      
+  Upgrades:
+    The Encampment:
+      
+    The Heroes:
+      
+    The Cursed:
+      
