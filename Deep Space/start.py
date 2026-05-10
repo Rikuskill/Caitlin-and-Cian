@@ -5,6 +5,8 @@ import random
 import enemies
 import player
 
+##CREATE WINDOWS AND FRAMES BELOW vvvvvvv
+
 root = tk.Tk()
 
 root.title("Deep Space")
