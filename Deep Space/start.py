@@ -39,34 +39,46 @@ Cframe.place(relwidth=.6, relheight=1, relx=.2)
 Lframe = tk.Frame(root, bg="darkgray", bd=3, relief=tk.RIDGE)
 Lframe.place(relwidth=.2, relheight=1)
 
+button_exit = tk.Button(Lframe, text="Exit", command=root.destroy)
+button_exit.pack(side="bottom", pady=10)
+
 Rframe = tk.Frame(root, bg="darkgray", bd=3, relief=tk.RIDGE)
 Rframe.place(relwidth=.2, relheight=1, relx=.8)
 
-def update_frame():
+def update_Cframe():
     Cframe.destroy()
+    create_Cframe()
+
+def update_Lframe():
     Lframe.destroy()
+    create_Lframe()
+
+def update_Rframe():
     Rframe.destroy()
-    create_frame()
+    create_Rframe()
 
-def create_frame():
+def create_Cframe():
     global Cframe
-    global Lframe
-    global Rframe
-
     Cframe = tk.Frame(root, bg="black")
     Cframe.place(relwidth=.6, relheight=1, relx=.2)
 
+def create_Lframe():
+    global Lframe
     Lframe = tk.Frame(root, bg="darkgray", bd=3, relief=tk.RIDGE)
     Lframe.place(relwidth=.2, relheight=1)
-    
-    Rframe = tk.Frame(root, bg="darkgray", bd=3, relief=tk.RIDGE)
-    Rframe.place(relwidth=.2, relheight=1, relx=.8)
 
     Lframe.label = tk.Label(Lframe, textvariable=mc_name, wraplength=380, fg="black", bg="darkgray", font=cf)
     Lframe.label.pack()
 
     button_exit = tk.Button(Lframe, text="Exit", command=root.destroy)
     button_exit.pack(side="bottom", pady=10)
+
+def create_Rframe():
+    global Rframe
+    Rframe = tk.Frame(root, bg="darkgray", bd=3, relief=tk.RIDGE)
+    Rframe.place(relwidth=.2, relheight=1, relx=.8)
+   
+    
 
 ##PLAYER VARIABLE CREATION BELOW vvvvvvvv
 
@@ -76,7 +88,8 @@ mc_atk = int(player.mc.atk)
 ##NAME INPUT BELOW vvvvvvv
 
 def name():
-    update_frame()
+    update_Cframe()
+    update_Lframe()
     storytext.set("What is your name?")
     story = tk.Label(Cframe, textvariable=storytext, wraplength=950, fg="white", bg="black", font=cf)
     story.pack(pady=10)
@@ -100,7 +113,7 @@ def on_submit():
 ##STORY STUFF BELOW vvvvvvv
 
 def start():
-    update_frame()
+    update_Cframe()
     storytext.set("Welcome.")
     story = tk.Label(Cframe, textvariable=storytext, wraplength=950, fg="white", bg="black", font=cf)
     story.pack(pady=10)
@@ -108,7 +121,7 @@ def start():
     button_name.pack(pady=50)
 
 def greet():
-    update_frame()
+    update_Cframe()
     tk.Label(Cframe, text="Welcome, " + mc_name.get() + ".", wraplength=950, fg="white", bg="black", font=cf).pack(pady=10)
     button_battle = tk.Button(Cframe, text="Next", command=encounter)
     button_battle.pack(pady=50)
@@ -119,6 +132,7 @@ def encounter():
     
     if random.random() < .25:
         enemy_desc.set(enemies.slime.desc)
+        global enemy_maxhp
         enemy_maxhp = int(enemies.slime.hp)
         global enemy_hp 
         enemy_hp = int(enemies.slime.hp)
@@ -138,11 +152,15 @@ def encounter():
             escape()
             
 
-def battle():
-    update_frame()
-    tk.Label(Cframe, text= enemy_desc.get(), wraplength=950, fg="white", bg="black", font=cf).pack(pady=10)
+def battle_Lframe():
     tk.Label(Rframe, text= enemy_name.get(), wraplength=950, fg="black", bg="darkgray", font=cf).pack(pady=10)
+    global enemy_hp 
     tk.Label(Rframe, text= str(enemy_hp) + " HP", wraplength=950, fg="black", bg="darkgray", font=cf).pack(pady=10)
+
+def battle():
+    update_Cframe()
+    battle_Lframe()
+    tk.Label(Cframe, text= enemy_desc.get(), wraplength=950, fg="white", bg="black", font=cf).pack(pady=10)
     tk.Label(Lframe, text= str(mc_hp) + " HP", wraplength=950, fg="black", bg="darkgray", font=cf).pack(pady=10)
 
 
@@ -155,12 +173,14 @@ def battle():
 
 def atk():
     attack = mc_atk - enemy_dfs
-    enemy_hp = enemy_maxhp - attack
+    enemy_hp = int(enemy_maxhp) - int(attack)
+    update_Rframe()
+    battle_Lframe()
     tk.Label(Cframe, text= "You deal " + str(attack) + " damage to the " + enemy_name.get() + ".", wraplength=950, fg="white", bg="black", font=cf).pack(pady=10)
 
 
 def escape():
-    update_frame()
+    update_Cframe()
     tk.Label(Cframe, text= "You avoid the monsters.", wraplength=950, fg="white", bg="black", font=cf).pack(pady=10)
     button_reroll = tk.Button(Cframe, text="Reroll", command=encounter)
     button_reroll.pack(pady=50)
